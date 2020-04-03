@@ -1,0 +1,56 @@
+.user-button {
+    background: none;
+    border: none;
+}
+
+.fa-large {
+  font-size: 2.5rem;
+}
+
+.notificationTray {
+    top: 47px;
+    right: 127px;
+    position: absolute;
+    z-index: 10000;
+    height: auto;
+    min-width: 16px;
+    padding: 0px 6px 0px 6px;
+    margin: 4px 2px 4px 2px;
+    color: hsl(0,0%,85%);
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    cursor: default;
+  }
+
+.notificationTray {
+    min-width: 300px;
+}
+
+.doorHanger,
+.doorHangerRight {
+  border: 1px solid hsla(0,0%, 100%,.5);
+  border-radius: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.doorHanger:after, .doorHanger:before,
+.doorHangerRight:after, .doorHangerRight:before {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  right: 20px;
+  position: absolute;
+  pointer-events: none;
+}
+.doorHanger:after,
+.doorHangerRight:after {
+  border-bottom-color: hsla(0,0%, 100%,.99);
+  border-width: 8px;
+}
+.doorHanger:before,
+.doorHangerRight:before {
+  border-bottom-color: hsla(0,0%, 100%,.5);
+  border-width: 9px;
+}

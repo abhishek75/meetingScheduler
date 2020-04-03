@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+        <app-breadcrumbs></app-breadcrumbs>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <h2 i18n="@@whatToDo">What would you like to do?</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-3 mx-auto offset-1 mt-5">
+        <div class="card mx-auto my-1 cursor-pointer card-menu display-block" style="height: 24vh">
+            <a [routerLink]="['/upload']"
+            matTooltip="Option to create a job" 
+            matTooltipClass="stride-tool-tip">
+              <div class="card-body text-center">
+                  <h4><i style="font-size: 24pt" class=" fa fa-upload"></i></h4>
+                  <div class="card-title">
+                      <span i18n="@@uploadDocument" class="">Create Meet</span>
+                  </div>
+              </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3 mx-auto mt-5">
+      <div class="card mx-auto my-1 cursor-pointer card-menu display-block" style="height: 24vh">
+        <a  [routerLink]="['/dashboard']"
+            matTooltip="Results" 
+            matTooltipClass="stride-tool-tip">
+          <div class="card-body text-center">
+            <h4><i style="font-size: 24pt" class=" fa fa-tasks"></i></h4>
+            <div class="card-title">
+                <span i18n="@@viewDashboard" class="">View Meeting Details</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="min-time-example">
+        <input placeholder="Min time 03:15 am"
+            [ngxTimepicker]="min" [min]="'03:15 am'" readonly>
+        <ngx-material-timepicker #min></ngx-material-timepicker>
+    </div>
+    </div>
+  </div>
+</div>

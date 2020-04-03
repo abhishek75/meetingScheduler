@@ -1,0 +1,50 @@
+table {
+    width: 100%;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.table-container {
+    margin: auto;
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 315px);
+}
+
+.table-container .mat-table {
+    max-height: calc(100vh - 265px);
+    overflow-y: auto;
+}
+
+.table-container .mat-table .mat-header-row {
+    position: sticky;
+    top: 0;
+    background: white;
+}
+
+.mat-paginator-sticky {
+    bottom: 0px;
+    position: sticky;
+    z-index: 10;
+}
+
+.mat-expansion-panel {
+    box-shadow: none !important;
+}
+
+.mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+    display: block;
+    flex-grow: 1;
+    margin-right: 16px;
+}
+
+.btn {
+    padding: 0.4rem 1rem !important;
+}
+
+::ng-deep .mat-paginator-container {
+    min-height: 40px !important;
+}

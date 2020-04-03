@@ -1,0 +1,58 @@
+<div class="container-fluid scroll-max">
+  <div class="row justify-content-center">
+    <h2 class="mt-5" i18n="@@whatToDo">What would you like to do?</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-3 ml-auto offset-1 mt-5">
+        <div class="card mx-auto my-1 cursor-pointer card-menu display-block">
+            <!-- <a [routerLink]="['/usecases']"> -->
+            <a (click)="disabled()">
+                <div class="card-body bg-gray-light text-center">
+                    <h4><i style="font-size: 7rem" class="text-blue fa fa-sitemap"></i></h4>
+                    <div class="card-title">
+                        <span i18n="@@placeholder">Placeholder</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3 mr-auto mt-5">
+      <div class="card mx-auto my-1 cursor-pointer card-menu display-block">
+        <a (click)="disabled()">
+            <div class="card-body text-center">
+                <h4><i style="font-size: 7rem" class="text-blue fa fa-magic"></i></h4>
+                <div class="card-title">
+                    <span i18n="@@placeholder">Placeholder</span>
+                </div>
+            </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3 ml-auto offset-1 mt-5">
+          <div class="card mx-auto my-1  display-block display-block">
+            <!-- <a [routerLink]="['/settings']"> -->
+              <div class="card-body bg-gray-light text-center">
+                  <h4><i style="font-size: 7rem" class="text-blue fa fa-sliders"></i></h4>
+                  <div class="card-title">
+                    <span i18n="@@placeholder">Placeholder</span>
+                  </div>
+              </div>
+            <!-- </a> -->
+          </div>
+      </div>
+      <div class="col-md-3 mr-auto mt-5">
+        <div class="card mx-auto my-1 display-block">
+            <a (click)="notify()">
+                <div class="card-body text-center">
+                    <h4><i style="font-size: 7rem" class="text-blue fa fa-wrench"></i></h4>
+                    <div class="card-title">
+                        <span>Test Notification</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+      </div>
+    </div>
+</div>

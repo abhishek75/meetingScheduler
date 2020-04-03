@@ -1,0 +1,38 @@
+<div class="container-fluid mt-inverse-15">
+  <div class="row">
+    <div class="col-md-12">
+      <div >
+        <div class="row">
+          <div class="col-sm-10">
+            <app-breadcrumbs></app-breadcrumbs>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <div [class.invisible]="selectedSets.length == 0">
+              <span class="material-control-description" i18n="@@numberFileSelected">
+                {selectedSets.length, plural, =0 {No Document selected} =1 {1 Job selected} other {{{selectedSets.length}} Jobs selected}}
+              </span>
+              <button class="btn btn-icon p-0 pl-3" (click)="trashSets()">
+                <i  matTooltip="Delete Documents" 
+                      matTooltipClass="stride-tool-tip" 
+                      class="fa fa-lg fa-trash cursor-pointer">
+                  </i>
+              </button>        
+            </div>
+          </div>
+        </div>
+        <div class="card" style="height:  calc(100vh - 190px);">
+          <dashboard  
+            [sets]="dashboardSets"
+            (selectedChange)="collectSelectedSets($event)"
+            [paginatorPageIndex]="pageIndex"
+            [totalNumberOfDocuments]="totalNumberOfDocuments"
+            (paginatorPageChangeEvent)="handleDashboardPaginationPageChangeEvent($event)"
+            [numberOfDocumentsShownPerPage]="numberOfDocumentsShownPerPage"
+            [dashboardSetsResponseStatus]="dashboardSetsResponseStatus">
+          </dashboard>
+      </div>
+    </div>
+  </div>
+</div>

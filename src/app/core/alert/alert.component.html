@@ -1,0 +1,34 @@
+<div *ngIf="visible" [ngClass]="{ 'snackbar-overlay': showOverlay == true}">
+  <div class="snackbar">
+      <div *ngIf="isMessage" class="message">
+          <h4 class="text-bold-blue text-smaller">{{message}}</h4>
+      </div>
+      <div *ngIf="isConfirm" class="message p-3">
+          <pre class="text-bold-blue text-medium">{{message}}</pre>
+          <button *ngIf="dismissOnly == false" class="btn btn-stride-blue mt-4" (click)="confirm(true)">
+              <i class="fa fa-check text-small"></i>
+              {{confirmYesText !== 'false'? confirmYesText : '' }}
+          </button>
+          <button *ngIf="dismissOnly == false" class="btn btn-stride-purple mt-4 ml-4" (click)="confirm(false)">
+              <i class="fa fa-close text-small"></i>
+              {{confirmNoText !== 'false'? confirmNoText : '' }}
+          </button>
+          <button *ngIf="dismissOnly == true"
+                  class="btn btn-stride-purple mt-4 ml-4" (click)="confirm(false)">
+                  <i class="fa fa-close text-small"></i>
+                  Close
+          </button>
+      </div>
+      <div *ngIf="isProgress" class="message p-3">
+          <h4 class="text-bold-blue text-smaller">{{message}}</h4>
+          <mat-progress-bar *ngIf="!indeterminate"  mode="determinate"
+                            value="{{progressValue + ''}}">
+          </mat-progress-bar>
+          <mat-progress-bar *ngIf="indeterminate"  mode="indeterminate">
+          </mat-progress-bar>
+
+      </div>
+  </div>
+</div>
+
+
