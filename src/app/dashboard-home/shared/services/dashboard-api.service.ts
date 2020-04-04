@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import { Constants } from '../constants/constants';
 import { DashboardModel } from '../models/dashboard.model';
@@ -14,10 +13,9 @@ export class DashboardApiService {
   path = new Constants.Path();
   sampleDashboardData = sampleDashboardData;
   sampleDashboardResponse =  new BehaviorSubject(this.sampleDashboardData);
-    
+  sampleRoomDetailsResponse= new BehaviorSubject(this.sampleDashboardData.results);
   constructor(
     private httpService: HttpService,
-    private http: HttpClient
   ) { }
 
   getDashboardSets(data?: any) {
@@ -28,26 +26,43 @@ export class DashboardApiService {
             );
   }
 
-  requestPaginatedDashboardset(pagination_page_number: number, documents_per_page?: number) {
+  requestRoomsDetails() {
+    this.sampleRoomDetailsResponse.next(this.sampleDashboardData.results);
+    return this.sampleRoomDetailsResponse;
+  }
+
+  requestPaginatedDashboardset(room_id: number, pagination_page_number: number, documents_per_page?: number) {
     let url_component = [Constants.CORE, Constants.FILE_LISTING, Constants.REGULAR];
     let queryParam = [{name: Constants.PAGE, value: pagination_page_number},
     {name: Constants.ITEMS_PER_PAGE, value: documents_per_page}];
     let api_url = this.path.generateParamPath(url_component, queryParam);
-    // let api_url =  this.path.generatePath(url_component);
+    
     const end = (pagination_page_number) * documents_per_page;
     const start = (pagination_page_number - 1) * documents_per_page;
-    const part = this.sampleDashboardData.results.slice(start, end);
+    let results = [];
+    this.sampleDashboardData.results.forEach((element) => {
+      if(element.id === room_id) {
+        results = [...element.data];
+
+      }
+    });
+    const part = results.slice(start, end);
     let newResponse = {...this.sampleDashboardData};
     newResponse.document_per_page = documents_per_page;
     newResponse.results =  part;
+    newResponse.count = part.length;
     this.sampleDashboardResponse.next(newResponse);
     return  this.sampleDashboardResponse;
   }
 
-  deleteDashboardSet(id: number[]){
-    this.sampleDashboardData.results = this.sampleDashboardData.results.filter((element) => {
-      if(!id.includes(element.job_id)) {
-        return element;
+  deleteDashboardSet(room_id: number, meeting_ids: number[]){
+    this.sampleDashboardData.results.forEach((element) => {
+      if(element.id === room_id) {
+        element.data  = element.data.filter((el) => {
+          if(!meeting_ids.includes(el.id)) {
+            return el;
+          }
+        })
       }
     });
   }

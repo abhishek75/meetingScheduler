@@ -11,4 +11,6 @@ export class CoreApiService {
     private http: HttpClient,
     private authService: AuthenticationService) {
     }
+
+    
 }

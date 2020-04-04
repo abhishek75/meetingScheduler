@@ -66,9 +66,9 @@ export class DashboardComponent implements OnChanges, OnInit {
     this.dataSource.connect().subscribe(d => this.renderedData = d);
    
       // this.displayedColumns = ['select', 'start_time', 'file_name', 'end_time', 'status', 'uploaded_by', 'datapoints'];
-      this.displayedColumns = ['select', 'Sno','job_id', 'start_time', 'job_name',
-      'end_time', 'job_type' , 'status'];
-
+      this.displayedColumns = ['select', 'Sno', 'user_name', 'meeting_room', 'date', 'start_time',
+      'end_time' , 'agenda'];
+      
   }
 
   ngOnChanges(changes: SimpleChanges) {

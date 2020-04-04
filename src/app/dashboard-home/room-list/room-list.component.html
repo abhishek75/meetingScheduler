@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-12 scroll-400 card position-relative" style="height: calc(100vh - 190px);">
+    <table  class="table table-hover" >
+      <thead>
+        <th scope="col">
+            <!-- <mat-checkbox (change)="selectAll($event)"></mat-checkbox> -->
+        </th>
+        <th scope="col">
+            <span>No.</span><br>
+        </th>
+        <th scope="col">Room Id</th>
+        <th scope="col">Room Name</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of roomItems;let idx = index;">
+          <td>
+            <mat-checkbox [(ngModel)]="room.selected" (change)="updateSelected($event, room, idx)"></mat-checkbox>
+          </td>
+          <td >{{idx + 1}}</td>
+          <td>{{room.id}}</td>
+          <td>{{room.value}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,5 +1,3 @@
-import { interpolateDate } from "d3";
-
 export namespace DashboardModel {
 
   export interface ResultEvent {
@@ -15,6 +13,17 @@ export namespace DashboardModel {
       num_pages?: number;
       previous?: string;
       document_per_page?: number;
+      results: RoomDetailsDataType[];
+  }
+
+  export interface DashboardTableScheduledMeetingModel {
+    count: number;
+      has_next?: boolean;
+      has_previous?: boolean;
+      next: string;
+      num_pages?: number;
+      previous?: string;
+      document_per_page?: number;
       results: DashboardDataObjectType[];
   }
 
@@ -24,24 +33,42 @@ export namespace DashboardModel {
     status: boolean;
   }
 
-  export interface DashboardDataObjectType {
-      end_time: string;
-      start_time: string;
-      id: number;
-      status: string;
-      job_type: string;
-      job_name: string;
-      job_id: number;
+  export interface RoomDetailsDataType {
+    id: number;
+    value: string;
+    selected?: boolean;
+    data: DashboardDataObjectType[];
   }
 
-  export class DashboardDataObjectModel {
-    end_time: null;
-    start_time: null;
-    id: null;
-    status: null;
-    job_type: null;
-    job_name: null;
-    job_id: null;
+  export class RoomDetailsDataType {
+    id = -1;
+    value = '';
+    data = [new DashboardDataObjectType()];
+  }
+
+  export interface DashboardDataObjectType {
+      id: number;
+      user_name: string;
+      meeting_room: string;
+      date: string;
+      selected?: boolean;
+      status: string;
+      start_time: string;
+      end_time: string;
+      meeting_id: number;
+      agenda: string;
+  }
+
+  export class DashboardDataObjectType {
+    id = -1;
+    user_name = '';
+    meeting_room = '';
+    date = '';
+    status = '';
+    start_time = '';
+    end_time = '';
+    meeting_id = -1;
+    agenda = '';
   }
 
 }

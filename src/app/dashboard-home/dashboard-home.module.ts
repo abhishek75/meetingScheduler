@@ -8,6 +8,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { HomePageComponent } from './homepage/homepage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardApiService } from './shared/services/dashboard-api.service';
+import { RoomListComponent } from './room-list/room-list.component';
 
 
 
@@ -30,7 +31,8 @@ const routes: Routes = [
   declarations: [
     DashboardSettingsComponent,
     HomePageComponent,
-    DashboardComponent
+    DashboardComponent,
+    RoomListComponent
   ],
   providers: []
 })

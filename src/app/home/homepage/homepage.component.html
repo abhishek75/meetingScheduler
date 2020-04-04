@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-md-3 mx-auto offset-1 mt-5">
         <div class="card mx-auto my-1 cursor-pointer card-menu display-block" style="height: 24vh">
-            <a [routerLink]="['/upload']"
+            <a [routerLink]="['/create-meeting']"
             matTooltip="Option to create a job" 
             matTooltipClass="stride-tool-tip">
               <div class="card-body text-center">
@@ -35,11 +35,6 @@
           </div>
         </a>
       </div>
-      <div class="min-time-example">
-        <input placeholder="Min time 03:15 am"
-            [ngxTimepicker]="min" [min]="'03:15 am'" readonly>
-        <ngx-material-timepicker #min></ngx-material-timepicker>
-    </div>
     </div>
   </div>
 </div>

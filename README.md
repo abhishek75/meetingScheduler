@@ -1,4 +1,4 @@
-#  Demo Job Portal
+#  Create Meeting Portal
 
 Frontend using Angular v8, using Angular CLI
 
