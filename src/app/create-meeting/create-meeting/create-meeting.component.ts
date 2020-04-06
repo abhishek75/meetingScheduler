@@ -50,6 +50,10 @@ export class CreateMeetingComponent implements OnInit {
       this.alertService.showMessage('Invalid Meeting Hours. Minimum 30 minutes of meeting should be scheduled with valid Start time and End time');
         return;
     }
+    if(!this.isStartTimeGreaterThanCurrentTime()){
+      this.alertService.showMessage('Invalid Meeting Start Time.');
+      return false;
+    }
     let meetingRoomId = this.createMeetingForm.get('room').value;
     let meetingRoomDetail = new DashboardModel.DashboardDataObjectType();
     meetingRoomDetail.id = sampleDashboardData.count++;
@@ -82,7 +86,7 @@ export class CreateMeetingComponent implements OnInit {
       if (60 - parseInt(startTime[1]) + parseInt(endTime[1]) < 30) {
         return false;
       }
-    }
+    } 
     return true;
 
   }
@@ -103,6 +107,20 @@ export class CreateMeetingComponent implements OnInit {
 
   getEndTime(event: string) {
     this.endTime = event;
+  }
+
+  isStartTimeGreaterThanCurrentTime() {
+    const date = new Date(); 
+    const now = date.getHours() * 60 + date.getMinutes();
+    const startTime = this.startTime.split(':');
+    const endTime = this.endTime.split(':');
+    const start = parseInt(startTime[0]) * 60 + parseInt(startTime[1]);
+    const end =  parseInt(endTime[0]) * 60 + parseInt(endTime[1]);
+    let status = false;
+    if(start >= now){
+      status = true;
+    }
+    return status;
   }
 
 }
