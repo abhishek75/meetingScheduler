@@ -1,4 +1,4 @@
-#  Demo Job Portal
+#  Demo Meeting Scheduler Portal
 
 Frontend using Angular v8, using Angular CLI
 
