@@ -37,6 +37,7 @@ export namespace DashboardModel {
     id: number;
     value: string;
     selected?: boolean;
+    status?: string;
     data: DashboardDataObjectType[];
   }
 

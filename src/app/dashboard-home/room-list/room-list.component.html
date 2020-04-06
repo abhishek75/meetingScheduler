@@ -1,6 +1,55 @@
 <div class="row">
+    <div class="col-md-8">
+      <div>
+        <mat-form-field >
+          <mat-label>Choose a date</mat-label>
+          <input matInput [(ngModel)]="date" [matDatepickerFilter]="dayFilter" [matDatepicker]="picker" required disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field >
+            <mat-label>Start Time</mat-label>
+            <input matInput [(ngModel)]="start_time" 
+                [ngxTimepicker]="startTime" 
+                min="09:00" max="18:00" 
+                [format]="24" readonly required disabled>
+            <ngx-material-timepicker (timeSet)="getStartTime($event)" #startTime></ngx-material-timepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>End Time</mat-label>
+          <input matInput [(ngModel)]="end_time" 
+                  [ngxTimepicker]="endTime" 
+                  min="09:00" max="18:00" 
+                  [format]="24" readonly required disabled>
+          <ngx-material-timepicker (timeSet)="getEndTime($event)" 
+          #endTime></ngx-material-timepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-4 mt-4">
+      <div class="mt-3">
+        <button 
+              class="btn btn-stride-blue center-block p-1" (click)="checkStatus()">
+              Check Status
+        </button>
+      </div>
+      <div class="mt-3">
+        <button
+              class="btn btn-stride-blue center-block p-1" (click)="clear()">
+              Clear
+        </button> 
+      </div>
+      
+    </div>
+</div>
+
+<div class="row">
   <div class="col-12 scroll-400 card position-relative" style="height: calc(100vh - 190px);">
-    <table  class="table table-hover" >
+    <table  class="table table-hover">
       <thead>
         <th scope="col">
             <!-- <mat-checkbox (change)="selectAll($event)"></mat-checkbox> -->
@@ -10,6 +59,7 @@
         </th>
         <th scope="col">Room Id</th>
         <th scope="col">Room Name</th>
+        <th *ngIf="ifFilter" scope="col">Status</th>
       </thead>
       <tbody>
         <tr *ngFor="let room of roomItems;let idx = index;">
@@ -19,6 +69,7 @@
           <td >{{idx + 1}}</td>
           <td>{{room.id}}</td>
           <td>{{room.value}}</td>
+          <td *ngIf="ifFilter">{{room.status}}</td>
         </tr>
       </tbody>
     </table>
